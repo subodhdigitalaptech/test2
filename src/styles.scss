@@ -1,0 +1,117 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@import '~roboto-fontface/css/roboto/roboto-fontface.css';
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto';
+}
+
+
+/* CSS only for examples not required for centering */
+.container {
+    height: 100%;
+}
+
+/* show border around full height container */
+
+li.nav-item {
+    width: 33%;
+    font-size: 21pt;
+    font-weight: 500;
+}
+
+.card-title {
+    margin-bottom: 0.75rem;
+    font-size: xxx-large;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+.sub-header{
+    
+    color: #6c757ead;
+    font-size: 22px;
+}
+
+.btn-secondary{
+    color: #6c757e;
+    background-color: #41e8a8;
+    border-color: #41e8a8;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 14px;
+}
+
+.col-form-label {
+    text-align: left;
+    color: #6c757ead;
+    font-size: 22px;
+}
+
+.form-control {
+   
+    padding: 2rem 0.75rem;
+   
+}
+
+.card-body {
+   
+    padding: 4.25rem;
+}
+
+.card {
+    padding: 30px;
+    background-color: #4e59f3;
+}
+
+.common-background{
+    background-color: #fff;
+}
+
+.custom-icon{
+margin: 10px;
+}
+
+.btn:hover{
+    background-color: #41e8a8;
+    border-color: #41e8a8;
+}
+
+a.nav-link {
+    color: #6c757e;
+}
+.custom-label{
+    display: block;
+}
+a.form-group.row.col-sm-10.sub-header {
+    text-decoration-line: none;
+}
+a:hover{
+    color: #6c757e; 
+}
+
+.custom-lock{
+    padding: 0 2px 0 10px;
+}
+.tabactive{
+    color: #4e59f3 !important;
+}
+
+.invalid-feedback {
+   
+    padding-top: calc(0.375rem + 1px);
+    padding-bottom: calc(0.375rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5;
+    display: flex !important;
+}
+
+.row {
+   
+    margin-top: 15px;
+    margin-bottom: 15px;
+  
+}

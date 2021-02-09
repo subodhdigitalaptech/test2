@@ -1,0 +1,184 @@
+<div class="container">
+    <div class="row h-100">
+        <div class="col-sm-12 align-self-center">
+            <div class="row valign-wrapper">
+                <div class="col s6 offset-s3 valign">
+                    <div class="card">
+                        <div class="card-header common-background">
+                            <div class="card-title">
+                                Checkout
+                            </div>
+                        </div>
+
+                        <div class="card common-background text-center">
+                            <div class="card-header">
+                                <ul class="nav nav-pills card-header-pills">
+                                    <li class="nav-item" [class.active]="viewMode == 'tab1'">
+
+
+
+                                        <a class="nav-link" [class.tabactive]="viewMode == 'tab1'"><img
+                                                class="custom-icon"
+                                                src="https://image.flaticon.com/icons/svg/126/126486.svg" alt=""
+                                                width="32" height="32">
+                                            DETAIL
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item" [class.active]="viewMode == 'tab2'">
+                                        <a class="nav-link" [class.tabactive]="viewMode == 'tab2'">
+                                            <img class="custom-icon"
+                                                src="https://image.flaticon.com/icons/svg/633/633611.svg" alt=""
+                                                width="32" height="32">
+                                            PAYMENT
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" [class.active]="viewMode == 'tab3'">
+
+                                        <a class="nav-link " [class.tabactive]="viewMode == 'tab3'" tabindex="-1"
+                                            aria-disabled="true">
+                                            <img class="custom-icon"
+                                                src="https://image.flaticon.com/icons/svg/447/447147.svg" alt=""
+                                                width="32" height="32">
+                                            SUCCESS</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div [ngSwitch]="viewMode">
+                                <div class="card-body" *ngSwitchCase="'tab1'">
+                                    <h2 class="form-group row col-sm-10 sub-header">
+                                        Fill this form with your identity.
+                                    </h2>
+                                    <form [formGroup]="detailForm" (ngSubmit)="onSubmit()">
+
+                                        <div class="form-group row">
+                                            <label for="inputName" class="col-sm-12 col-form-label">Name</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" id="inputName"
+                                                    formControlName="name"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                                                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.name.errors.required">Name is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail" class="col-sm-12 col-form-label">Email</label>
+                                            <div class="col-sm-12">
+                                                <input type="text" formControlName="email" class="form-control"
+                                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                                    <div *ngIf="f.email.errors.email">Email must be a valid email
+                                                        address</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h2 class="form-group row col-sm-10 sub-header">
+                                            The download link will be sent to this email
+                                        </h2>
+
+
+                                        <div class="form-group row">
+
+                                            <div class="col-sm-12">
+                                                <button  class="btn btn-secondary btn-lg btn-block">Continue</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                                <div class="card-body" *ngSwitchCase="'tab2'">
+                                    <a class="form-group row col-sm-10 sub-header">
+                                        Fill this form with your credit card details.
+                                    </a>
+                                    <form [formGroup]="paymentForm" (ngSubmit)="onPaymentSubmit()">
+
+                                        <div class="form-group row">
+                                            <div class="col col-sm-8">
+                                                <label for="inputNumber" class="col-form-label custom-label">Card
+                                                    Number</label>
+                                                    <input type="text" formControlName="card_number" id="inputNumber" class="form-control" [ngClass]="{ 'is-invalid': paySubmitted && p.card_number.errors }" />
+                                                    <div *ngIf="paySubmitted && p.card_number.errors" class="invalid-feedback">
+                                                        <div *ngIf="p.card_number.errors.required">Card Number is required</div>
+                                                        <div *ngIf="p.card_number.errors.minlength">Card Number must be at least 16 number</div>
+                                                    </div>
+                                            </div>
+                                            <div class="col col-sm-4">
+                                                <label for="inputExpire"
+                                                    class="col-form-label custom-label">Expire</label>
+                                                <input type="text" class="form-control" id="inputExpire" formControlName="card_expire" [ngClass]="{ 'is-invalid': paySubmitted && p.card_expire.errors }">
+                                                <div *ngIf="paySubmitted && p.card_expire.errors" class="invalid-feedback">
+                                                    <div *ngIf="p.card_expire.errors.required">Card Expire is required</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col col-sm-8">
+                                                <label for="inputCard" class="col-form-label custom-label">Name
+                                                    on Card</label>
+                                                <input type="text" class="form-control" id="inputCard" formControlName="card_name" [ngClass]="{ 'is-invalid': paySubmitted && p.card_name.errors }">
+                                                <div *ngIf="paySubmitted && p.card_name.errors" class="invalid-feedback">
+                                                    <div *ngIf="p.card_name.errors.required">Card Name is required</div>
+                                                </div>
+                                            </div>
+                                            <div class="col col-sm-4">
+                                                <label for="inputCode" class="col-form-label custom-label">Code</label>
+
+                                                <input type="text" class="form-control" id="inputCode" formControlName="card_code" [ngClass]="{ 'is-invalid': paySubmitted && p.card_code.errors }">
+                                                <div *ngIf="paySubmitted && p.card_code.errors" class="invalid-feedback">
+                                                    <div *ngIf="p.card_code.errors.required">Code is required</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <a class="form-group row col-sm-10 sub-header">
+                                            <img class="custom-lock"
+                                                src="https://image.flaticon.com/icons/svg/481/481195.svg" alt=""
+                                                width="32" height="32">
+                                            Secure Payement
+                                        </a>
+
+
+                                        <div class="form-group row">
+
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-secondary btn-lg btn-block">Pay with Credit Card</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="card-body" *ngSwitchCase="'tab3'">
+
+                                    <div class="col-md-6 mx-auto mt-5">
+                                        <div class="payment">
+                                            <div class="payment_header">
+                                                <div class="check"><i class="fa fa-check" aria-hidden="true"></i></div>
+                                            </div>
+                                            <div class="content">
+                                                <h1>Payment Success !</h1>
+                                                <p>We received your purchase request;
+                                                    we'll be in touch shortly! </p>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
